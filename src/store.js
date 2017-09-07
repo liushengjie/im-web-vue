@@ -1,7 +1,7 @@
 /**
  * Vuex
  * http://vuex.vuejs.org/zh-cn/intro.html
- */
+ */ 
 import Vue from 'vue';
 import Vuex from 'vuex';
 
