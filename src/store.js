@@ -1,9 +1,7 @@
-/**
- * Vuex
- * http://vuex.vuejs.org/zh-cn/intro.html
- */ 
 import Vue from 'vue';
 import Vuex from 'vuex';
+
+import axios from 'axios'
 
 Vue.use(Vuex);
 
@@ -11,45 +9,17 @@ const now = new Date();
 const store = new Vuex.Store({
     state: {
         // 当前用户
-        user: {
-            name: 'coffce',
-            img: 'dist/images/1.jpg'
-        },
+        user: {},
         // 会话列表
-        sessions: [
-            {
-                id: 1,
-                user: {
-                    name: '示例介绍',
-                    img: 'dist/images/2.png'
-                },
-                messages: [
-                    {
-                        content: 'Hello，这是一个基于Vue + Vuex + Webpack构建的简单chat示例，聊天记录保存在localStorge, 有什么问题可以通过Github Issue问我。',
-                        date: now
-                    }, {
-                        content: '项目地址: https://github.com/coffcer/vue-chat',
-                        date: now
-                    }
-                ]
-            },
-            {
-                id: 2,
-                user: {
-                    name: 'webpack',
-                    img: 'dist/images/3.jpg'
-                },
-                messages: []
-            }
-        ],
+        sessions: [],
         // 当前选中的会话
-        currentSessionId: 1,
+        currentSessionId: 0,
         // 过滤出只包含这个key的会话
         filterKey: ''
     },
     mutations: {
         INIT_DATA (state) {
-            let data = localStorage.getItem('vue-chat-session');
+            let data = localStorage.getItem('im-web');
             if (data) {
                 state.sessions = JSON.parse(data);
             }
@@ -70,6 +40,10 @@ const store = new Vuex.Store({
         // 搜索
         SET_FILTER_KEY (state, value) {
             state.filterKey = value;
+        },
+        // 登录
+        LOGIN (state, account, pwd) {
+            axios.post()
         }
     }
 });
@@ -78,7 +52,7 @@ store.watch(
     (state) => state.sessions,
     (val) => {
         console.log('CHANGE: ', val);
-        localStorage.setItem('vue-chat-session', JSON.stringify(val));
+        localStorage.setItem('im-web', JSON.stringify(val));
     },
     {
         deep: true

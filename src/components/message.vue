@@ -27,8 +27,8 @@ export default {
 </script>
 
 <template>
-<div class="message" v-scroll-bottom="session.messages">
-    <ul v-if="session">
+<div v-if="session" class="message" v-scroll-bottom="session.messages">
+    <ul>
         <li v-for="item in session.messages">
             <p class="time">
                 <span>{{ item.date | time }}</span>

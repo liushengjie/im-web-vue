@@ -5,8 +5,7 @@ export default {
     vuex: {
         actions: actions,
         getters: {
-            user: ({ user }) => user,
-            filterKey: ({ filterKey }) => filterKey
+            user: ({ user }) => user
         }
     },
     methods: {
@@ -20,8 +19,8 @@ export default {
 <template>
 <div class="card">
     <header>
-        <img class="avatar" width="40" height="40" :alt="user.name" :src="user.img">
-        <p class="name">{{user.name}}</p>
+        <img class="avatar" width="40" height="40" :alt="user.name" :src="user.img" v-show="user.img">
+        <p class="name" v-show="user.name">{{user.name}}</p>
     </header>
     <footer>
         <input class="search" type="text" placeholder="search user..." @keyup="onKeyup | debounce 150">

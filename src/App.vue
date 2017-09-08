@@ -12,9 +12,10 @@ export default {
         actions: actions
     },
     created () {
-        this.initData();
+        //this.initData();
     }
 }
+
 </script>
 
 <template>

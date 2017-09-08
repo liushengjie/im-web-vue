@@ -3,7 +3,10 @@ import { actions } from '../store';
 
 export default {
     vuex: {
-        actions: actions
+        actions: actions,
+        getters: {
+            currentSessionId : ({currentSessionId}) => currentSessionId
+        }
     },
     data () {
         return {
@@ -22,7 +25,7 @@ export default {
 </script>
 
 <template>
-<div class="text">
+<div v-show="currentSessionId" class="text">
     <textarea placeholder="按 Ctrl + Enter 发送" v-model="content" @keyup="onKeyup"></textarea>
 </div>
 </template>
